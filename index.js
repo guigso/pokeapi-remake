@@ -58,14 +58,16 @@ pokemons.forEach(pokemon => {
     obj.number =('00' + pokemon.id).slice(-3),
     obj.name = pokemon.identifier;
     obj.type = pokemon.types;
-    obj.evolution = pokemon.evolution ? pokemon.evolution.map(({ id, identifier, evolves_from, generation_id }) =>
+    obj.evolution = pokemon.evolution ? pokemon.evolution.map(({ id, identifier,types, evolves_from, generation_id }) =>
         ({
             id,
             name: identifier,
             number: ('00' + id).slice(-3),
             generation: generation_id,
+            type:types,
             evolves_from: evolves_from ? {
                 id: evolves_from.id,
+                name: evolves_from.identifier,
                 details: evolves_from.details
             } : ''
         })) : ''
